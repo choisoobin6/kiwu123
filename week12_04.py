@@ -3,14 +3,22 @@ import time
 
 TRIG = 23
 ECHO = 24
+RED_LED = 12  # 빨간색 LED를 GPIO 12번 핀에 연결
+HRESHOLD = 5  # 거리 임계값(cm)
 
-
-def setup():
+def setup():  7 usages (6 dynamic)
     GPIO.setmode(GPIO.BCM)
+    
+    # 초음파 센서 핀 설정 
     GPIO.setup(TRIG, GPIO.OUT)
     GPIO.setup(ECHO, GPIO.IN)
     
+    # LED 핀 설정
+    GPIO.setup(RED_LED, GPIO.OUT)  
+    
+    # 초기 상태 설
     GPIO.output(TRIG, False)
+    GPIO.output(RED_LED, False)
     print("초음파 센서 준비중 .....")
     time.sleep(2)
     
